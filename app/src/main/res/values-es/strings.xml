@@ -1,0 +1,30 @@
+<resources>
+    <!-- DO NOT TOUCH -->
+    <string name="app_name">Perfil</string>
+    <string name="main_invalid_data">Dato inválido</string>
+    <string name="main_save">Guardar</string>
+    <string name="main_saved_succesfully">Estudiante guardado satisfactoriamente</string>
+    <string name="main_error_saving">Error guardando estudiante</string>
+    <string name="main_dimension_ratio">16:9</string>
+    <string name="main_lblName_text">Nombre</string>
+    <string name="main_lblEmail_text">email</string>
+    <string name="main_txtName_hint">(nombre)</string>
+    <string name="main_txtEmail_hint">(email)</string>
+    <string name="main_lblPhonenumber_text">Teléfono</string>
+    <string name="main_txtPhonenumber_hint">(teléfono)</string>
+    <string name="main_lblAddress_text">Dirección</string>
+    <string name="main_txtAddress_hint">(dirección)</string>
+    <string name="main_lblWeb_text">Web</string>
+    <string name="main_txtWeb_hint">(url)</string>
+    <string name="main_imgEmail_desc">Icono de email</string>
+    <string name="main_imgAvatar_desc">Avatar</string>
+    <string name="main_txtName_autofillHints">Nombre</string>
+    <string name="main_txtEmail_autofillHints">Email</string>
+    <string name="main_imgPhonenumber_desc">Teléfono</string>
+    <string name="main_txtPhonenumber_autofillHints">Teléfono</string>
+    <string name="main_txtAddress_autofillHints">Dirección</string>
+    <string name="main_imgAddress_desc">Icono de dirección</string>
+    <string name="main_imgWeb_desc">Icono web</string>
+    <string name="main_txtWeb_autofillHints">url</string>
+    <!-- END DO NOT TOUCH -->
+</resources>
