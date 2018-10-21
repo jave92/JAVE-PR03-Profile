@@ -36,14 +36,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
+        // CREA UN MÉTODO PARA ESTABLECER EL ESTADO INICIAL.
         txtName.requestFocus();
         lblName.setTypeface(Typeface.DEFAULT_BOLD);
+        // ESTAS TRES LÍNEAS SON SIMILARES A LAS QUE DESPUÉS USAS EN EL MÉTODO setRndAvatar().
+        // CREA UN MÉTODO showAvatar(avatar)
         imgAvatar.setImageResource(Database.getInstance().getDefaultAvatar().getImageResId());
         imgAvatar.setTag(Database.getInstance().getDefaultAvatar().getImageResId());
         lblAvatar.setText(Database.getInstance().getDefaultAvatar().getName());
+        // LLAMA v AL PARÁMETRO. v1 SUENA RARO.
         imgAvatar.setOnClickListener(v1 -> setRndAvatar());
+        // NO TE HACE FALTA INDICAR EL TIPO View.
         lblAvatar.setOnClickListener((View v1) -> setRndAvatar());
         txtName.setOnFocusChangeListener((v, hasFocus) -> {
+            // LO QUE HACES EN TODOS LOS onFocusChange ES PRÁTICAMENTE LO MISMO. HAZ UN MÉTODO.
             if(hasFocus){
                 lblName.setTypeface(Typeface.DEFAULT_BOLD);
             }else{
@@ -138,11 +144,13 @@ public class MainActivity extends AppCompatActivity {
                 validateWeb();
             }
         });
+        // ¿POR QUÉ NO USAS LAMBDA AQUÍ?
         txtWeb.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if(actionId == EditorInfo.IME_ACTION_DONE){
                     save();
+                    // TE PROPORCIONO UN MÉTODO DE UTILIDAD PARA ESO EN LA CLASE KeyboardUtils.
                     InputMethodManager imm =
                             (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
@@ -155,6 +163,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews(){
+        // USA MEJOR ActivityCompat.requireViewById() EN VEZ DE findViewById. SI NO ENCUENTRA
+        // LA VISTA TE LANZARÁ EL ERROR EN ESTA LÍNEA Y NO MÁS ADELANTE CUANDO QUIERAS ACCEDER
+        // A UN MÉTODO DE LA VISTA.
         imgAvatar = findViewById(R.id.imgAvatar);
         lblAvatar = findViewById(R.id.lblAvatar);
         lblName = findViewById(R.id.lblName);
@@ -172,6 +183,8 @@ public class MainActivity extends AppCompatActivity {
         txtWeb = findViewById(R.id.txtWeb);
         imgWeb = findViewById(R.id.imgWeb);
     }
+    // LOS MÉTODOS validate... QUE HACES SON BASTANTE SIMILARES. HAZ UN MÉTODO QUE RECIBA
+    // ENTRE OTRAS COSAS UN BOOLEANO INDICATIVO DE SI ESE CAMPO ES VÁLIDO O NO.
     private boolean validateName(){
         if(txtName.getText().toString().isEmpty()){
             txtName.setError(getString(R.string.main_invalid_data));
@@ -262,6 +275,7 @@ public class MainActivity extends AppCompatActivity {
         boolean validPhone = validatePhonenumber();
         boolean validAddress = validateAddress();
         boolean validWeb = validateWeb();
+        // YO HARÍA UN MÉTODO isValidForm()
         boolean valid = validName && validEmail && validPhone && validAddress && validWeb;
         if(valid){
             message = getString(R.string.main_saved_succesfully);
